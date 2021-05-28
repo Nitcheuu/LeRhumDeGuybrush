@@ -1,0 +1,6 @@
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/bin/Debug/LeRhumDeGuy.exe
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/bin/Debug/LeRhumDeGuy.pdb
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/obj/x86/Debug/LeRhumDeGuy.csprojAssemblyReference.cache
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/obj/x86/Debug/LeRhumDeGuy.csproj.CoreCompileInputs.cache
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/obj/x86/Debug/LeRhumDeGuy.exe
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/obj/x86/Debug/LeRhumDeGuy.pdb

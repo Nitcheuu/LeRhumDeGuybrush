@@ -1,0 +1,4 @@
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/bin/Release/LeRhumDeGuy.exe
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/obj/x86/Release/LeRhumDeGuy.csproj.CoreCompileInputs.cache
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/obj/x86/Release/LeRhumDeGuy.exe
+/home/nitcheuu/Projects/LeRhumDeGuy/LeRhumDeGuy/obj/x86/Release/LeRhumDeGuy.csprojAssemblyReference.cache
