@@ -4,22 +4,54 @@ using System.Collections.Generic;
 using System.Text;
 namespace LeRhumDeGuy
 {
+    /// <summary>
+    /// Classe carte : "numérise" la carte
+    /// </summary>
     public class Carte
     {
+        #region Attributs
+        /// <summary>
+        /// Le chemin du fichier .clair
+        /// </summary>
         private string cheminAccees;
+        /// <summary>
+        /// La carte après lecture du fichier .clair
+        /// </summary>
         private char[,] carte = new char[10, 10];
+        /// <summary>
+        /// La trame
+        /// </summary>
         private List<string> carteCrypte = new List<string>();
+        /// <summary>
+        /// La liste des objets de la classe UniteTerre
+        /// </summary>
         private List<UniteTerre> listeUniteTerre = new List<UniteTerre>();
+        /// <summary>
+        /// La liste des objets de la classe UniteMer
+        /// </summary>
         private List<UniteMer> listeUniteMer = new List<UniteMer>();
+        /// <summary>
+        /// La liste des objets de la classe UniteForet
+        /// </summary>
         private List<UniteForet> listeUniteForet = new List<UniteForet>();
+        /// <summary>
+        /// La liste des objets de la classe Parcelle
+        /// </summary>
         private List<Parcelle> listeParcelleTerre = new List<Parcelle>();
+        #endregion
 
+        #region Constructeurs
+        /// <summary>
+        /// Constructeur de la classe Carte
+        /// </summary>
+        /// <param name="cheminAccees">Chemin d'acces au fichier.clair</param>
         public Carte(string cheminAccees)
         {
             this.cheminAccees = cheminAccees;
             this.LireLaCarte();
             this.CrypterLaCarte();
         }
+        #endregion
 
         private void LireLaCarte()
         {
@@ -230,7 +262,15 @@ namespace LeRhumDeGuy
             }
         }
 
-        public void InfoParcelle(char recherche)
+        public void AfficherParcelles()
+        {
+            foreach(Parcelle parcelle in this.listeParcelleTerre)
+            {
+                parcelle.AfficherInformations("Entier");
+            }
+        }
+
+        public void InfoParcelleRecherche(char recherche)
         {
             bool estTrouvee = false;
             if (Convert.ToInt32(recherche) >= 97 && Convert.ToInt32(recherche) <= 122)
@@ -239,7 +279,7 @@ namespace LeRhumDeGuy
                 {
                     if (parcelle.RetournerLaLettre() == recherche)
                     {
-                        parcelle.AfficherInformations();
+                        parcelle.AfficherInformations("Partiel");
                         estTrouvee = true;
                     }
                 }
@@ -252,6 +292,28 @@ namespace LeRhumDeGuy
             {
                 Console.WriteLine("ERREUR : Les noms de parcelles ne peuvent etre que des caracteres en minuscule");
             }
+        }
+
+        public void TailleParcelleRecherche(int tailleMinimale)
+        {
+            foreach(Parcelle parcelle in this.listeParcelleTerre)
+            {
+                if(parcelle.RetournerLaTaille() >= tailleMinimale)
+                {
+                    parcelle.AfficherInformations("Partiel");
+                }
+            }
+        }
+
+        public void AireMoyenneParcelles()
+        {
+            double moyenne, somme = 0;
+            foreach(Parcelle parcelle in this.listeParcelleTerre)
+            {
+                somme += parcelle.RetournerLaTaille();
+            }
+            moyenne = somme / this.listeParcelleTerre.Count;
+            Console.WriteLine("Aire moyenne : {0}", moyenne);
         }
 
         public List<string> RetournerLaTrame()

@@ -11,7 +11,6 @@ namespace LeRhumDeGuy
         private (int, int) coin1;
         private (int, int) coin2;
         private (int, int) dimensionsParcelle;
-        private int frontieres;
 
         public Parcelle(List<UniteTerre> liste, char lettre)
         {
@@ -27,8 +26,6 @@ namespace LeRhumDeGuy
             this.coin2 = listeUnite[0].RetournerCoordonnes();
 
             this.dimensionsParcelle = (0, 0);
-
-            this.frontieres = 0;
 
             this.DefinirLesCoins();
 
@@ -64,22 +61,36 @@ namespace LeRhumDeGuy
             }
         }
 
-        public void AfficherInformations()
+        public void AfficherInformations(string mode)
         {
-            Console.WriteLine("La parcelle {0} possede {1} unites", this.lettre, this.listeUnite.Count);
-            Console.WriteLine("Elle est de dimension {0}", this.dimensionsParcelle);
-            Console.WriteLine("Son point le plus petit est en : {0}", this.coin1);
-            Console.WriteLine("Son point le plus grand est en : {0}", this.coin2);
-            Console.WriteLine("Frontieres : {0}", this.frontieres);
-            foreach (UniteTerre unite in this.listeUnite)
+            if (mode == "Partiel" || mode == "Entier")
             {
-                unite.afficherCaracteristiques();
+                Console.WriteLine("PARCELLE {0} - {1} unites", this.lettre, this.listeUnite.Count);
+            }
+            if (mode == "Entier")
+            {
+                foreach (UniteTerre unite in this.listeUnite)
+                {
+                    Console.Write("{0}  ", unite.RetournerCoordonnes());
+                }
+                Console.Write("\n");
+            }
+            if (mode != "Partiel" && mode != "Entier")
+            {
+                Console.WriteLine("ERREUR : classe Parcelle > AfficherInformations(mode)");
+                Console.WriteLine("ERREUR : mode non reconnu");
             }
         }
+
 
         public char RetournerLaLettre()
         {
             return this.lettre;
+        }
+
+        public int RetournerLaTaille()
+        {
+            return this.listeUnite.Count;
         }
 
     }

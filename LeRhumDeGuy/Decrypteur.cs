@@ -121,13 +121,18 @@ namespace LeRhumDeGuy
         {
             if(lettre == '*')
             {
-                carte[y, x] = Convert.ToChar(ASCII);
+                lettre = Convert.ToChar(ASCII);
+                carte[y, x] = lettre;
                 ASCII++;
             }
             else
             {
                 carte[y, x] = lettre;
             }
+            if (NordOuestSudEst.Item1) { carte[y - 1, x] = lettre; }
+            if (NordOuestSudEst.Item2) { carte[y, x - 1] = lettre; }
+            if (NordOuestSudEst.Item3) { carte[y + 1, x] = lettre; }
+            if (NordOuestSudEst.Item4) { carte[y, x + 1] = lettre; }
         }
 
     }
