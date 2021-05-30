@@ -15,6 +15,10 @@ namespace LeRhumDeGuy
         /// </summary>
         private string cheminAccees;
         /// <summary>
+        /// Nom de la carte
+        /// </summary>
+        private string nom;
+        /// <summary>
         /// La carte après lecture du fichier .clair
         /// </summary>
         private char[,] carte = new char[10, 10];
@@ -45,9 +49,10 @@ namespace LeRhumDeGuy
         /// Constructeur de la classe Carte
         /// </summary>
         /// <param name="cheminAccees">Chemin d'acces au fichier.clair</param>
-        public Carte(string cheminAccees)
+        public Carte(string cheminAccees, string nom)
         {
             this.cheminAccees = cheminAccees;
+            this.nom = nom;
             this.LireLaCarte();
             this.CrypterLaCarte();
         }
@@ -188,10 +193,14 @@ namespace LeRhumDeGuy
         public void AfficherLaCarte()
         {
             int compteur = 0;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\nCarte de {0} island :\n", this.nom);
+            Console.ResetColor();
             foreach (char unite in this.carte)
             {
                 compteur++;
                 this.AfficherLeCaractereEnCouleur(unite);
+                Console.Write(" ");
                 if (compteur == 10)
                 {
                     Console.Write("\n");
@@ -227,6 +236,17 @@ namespace LeRhumDeGuy
                 Console.Write(crypte);
             }
             Console.Write("\n");
+        }
+
+        public void SauvegaderLaCarteCrypte(string adresse)
+        {
+            using (StreamWriter sw = new StreamWriter(adresse+ this.nom + ".chiffre"))
+            {
+                foreach(string caractere in this.carteCrypte)
+                {
+                    sw.Write(caractere);
+                }
+            }
         }
 
         public void AfficherLesStats()

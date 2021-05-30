@@ -1,21 +1,24 @@
 ﻿<Properties StartupConfiguration="{6C4060F4-CAEE-4E31-8AD6-0C2B394437F3}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="LeRhumDeGuy/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Source non disponible">
     <Files>
-      <File FileName="LeRhumDeGuy/Program.cs" Line="14" Column="43" />
-      <File FileName="LeRhumDeGuy/Carte.cs" Line="269" Column="52" />
+      <File FileName="LeRhumDeGuy/Program.cs" Line="11" Column="1" />
+      <File FileName="LeRhumDeGuy/Carte.cs" Line="247" Column="41" />
       <File FileName="LeRhumDeGuy/Unite.cs" Line="28" Column="1" />
       <File FileName="LeRhumDeGuy/UniteTerre.cs" Line="2" Column="1" />
       <File FileName="LeRhumDeGuy/UniteMer.cs" Line="4" Column="19" />
       <File FileName="LeRhumDeGuy/UniteForet.cs" Line="12" Column="28" />
-      <File FileName="LeRhumDeGuy/Parcelle.cs" Line="81" Column="61" />
+      <File FileName="LeRhumDeGuy/Parcelle.cs" Line="93" Column="42" />
       <File FileName="LeRhumDeGuy/Decrypteur.cs" Line="45" Column="10" />
+      <File FileName="LeRhumDeGuy/Menu.cs" Line="140" Column="49" />
+      <File FileName="LeRhumDeGuy/Affichage.cs" Line="167" Column="53" />
+      <File FileName="Source non disponible" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="LeRhumDeGuy" expanded="True">
             <Node name="LeRhumDeGuy" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="Affichage.cs" selected="True" />
             </Node>
           </Node>
         </State>

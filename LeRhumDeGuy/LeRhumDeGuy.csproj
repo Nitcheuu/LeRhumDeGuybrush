@@ -41,6 +41,8 @@
     <Compile Include="UniteForet.cs" />
     <Compile Include="Parcelle.cs" />
     <Compile Include="Decrypteur.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Affichage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
