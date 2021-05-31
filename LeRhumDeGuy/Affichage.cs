@@ -226,5 +226,60 @@ namespace LeRhumDeGuy
             Console.ResetColor();
         }
 
+        public static (string, string, string) DemanderCheminTrame()
+        {
+            (string, string, string) cheminNomEtDestination;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("==========================================================================================\n");
+            Console.Write("Indique le chemin de la trame, son nom ainsi que l'endroit où tu veux sauvegardrr la carte\n");
+            Console.Write("==========================================================================================\n\n\n\n");
+            Console.WriteLine("Exemple de chemin valide : /home/usr/ile.chiffre");
+            Console.Write("Chemin absolu : ");
+            cheminNomEtDestination.Item1 = Console.ReadLine();
+            Console.Write("Nom de l'ile : ");
+            cheminNomEtDestination.Item2 = Console.ReadLine();
+            Console.WriteLine("Exemple de destination valide : /home/usr/");
+            Console.Write("Où veux-tu ranger le fichier.clair ? : ");
+            cheminNomEtDestination.Item3 = Console.ReadLine();
+            Console.ResetColor();
+            Console.Clear();
+            return cheminNomEtDestination;
+        }
+
+        public static void DecryptageEnCours()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n\n\n\n||-------------------------------||\nDecryptage de la carte en cours");
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.Write("\n\n\n\n||011011010----------------------||\nDecryptage de la carte en cours");
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.Write("\n\n\n\n||1110101011011101---------------||\nDecryptage de la carte en cours");
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.Write("\n\n\n\n||0011101011010101010110---------||\nDecryptage de la carte en cours");
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.Write("\n\n\n\n||1101110101110110011111011011010||\nDecryptage de la carte en cours");
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.ResetColor();
+        }
+
+        public static void AfficherCarteDecryptee(Carte carte, string destination)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("===========================================");
+            Console.WriteLine("              Carte de l'ile : ");
+            Console.WriteLine("===========================================\n\n");
+            Console.ResetColor();
+            carte.AfficherLaCarte();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("La carte à été sauvegardée à l'addresse :");
+            Console.WriteLine(destination);
+            Console.Write("\n\nAppuyez sur entrée pour continuer...");
+        }
+
     }
 }

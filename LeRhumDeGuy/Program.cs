@@ -8,8 +8,8 @@ namespace LeRhumDeGuy
         {
             Menu.Chargement();
             Menu.MenuPrinciapl();
-            Affichage.EnvoieEnCours();
 
+            //Decrypteur.DecrypterLaTrame("/home/nitcheuu/IUT/Objet/Conception/Projetscabb.chiffre", "scab", "/home/nitcheuu/IUT/Objet/Conception/");
         }
     }
 }

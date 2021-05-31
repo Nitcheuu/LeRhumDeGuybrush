@@ -27,6 +27,14 @@ namespace LeRhumDeGuy
             {
                 Menu.ChargerUneCarte();
             }
+            if(reponse == 'b')
+            {
+                Menu.DecrypterUneTrame();
+            }
+            if (reponse == 'q')
+            {
+                Environment.Exit(0);
+            }
         }
 
         private static bool VerifMenuPrincipal(char reponse)
@@ -169,6 +177,24 @@ namespace LeRhumDeGuy
             {
                 Menu.MenuPrinciapl();
             }
+        }
+
+        public static void DecrypterUneTrame()
+        {
+            (string, string, string) CheminNomEtDestination;
+            string reponse ="*";
+            CheminNomEtDestination = Affichage.DemanderCheminTrame();
+            Decrypteur.DecrypterLaTrame(CheminNomEtDestination.Item1, CheminNomEtDestination.Item2, CheminNomEtDestination.Item3);
+            Carte carte = new Carte(CheminNomEtDestination.Item3 + CheminNomEtDestination.Item2 + ".clair", CheminNomEtDestination.Item2);
+            Affichage.DecryptageEnCours();
+            while (reponse != "")
+            {
+                Affichage.AfficherCarteDecryptee(carte, CheminNomEtDestination.Item3);
+                reponse = Console.ReadLine();
+                Console.Clear();
+            }
+            Menu.MenuPrinciapl();
+
         }
 
     }

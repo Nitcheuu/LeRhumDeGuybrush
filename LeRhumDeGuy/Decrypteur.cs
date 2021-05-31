@@ -6,22 +6,56 @@ namespace LeRhumDeGuy
 {
     public static class Decrypteur
     {
-        public static void DecrypterLaTrame(List<string> trame)
+        public static void DecrypterLaTrame(string chemin, string nom, string destination)
         {
+            List<string> trame = Decrypteur.LireLaTrame(chemin);
             List<int> frontieres = Decrypteur.FiltrerLaTrame(trame);
             int[,] frontieresTableau = Decrypteur.ConvertListEnTableau(frontieres);
             char[,] tableauNull = Decrypteur.InitialiserTableauNul();
             char[,] carte = Decrypteur.DefinirLaCarte(tableauNull, frontieresTableau);
+            Decrypteur.SauvegarderLaCarte(nom, destination, carte);
+        }
+
+        private static void SauvegarderLaCarte(string nom, string destination, char[,] carte)
+        {
             int i, j;
-            for (i = 0; i < 10; i++)
+            using (StreamWriter sw = new StreamWriter(destination + nom + ".clair"))
             {
-                for (j = 0; j < 10; j++)
+                for (i = 0; i < 10; i++)
                 {
-                    Console.Write(carte[i, j]);
+                    for (j = 0; j < 10; j++)
+                    {
+                        sw.Write(carte[i, j]);
+                    }
+                    sw.Write("\n");
                 }
-                Console.Write("\n");
             }
 
+        }
+
+        private static List<string> LireLaTrame(string chemin)
+        {
+            List<string> trame = new List<string>();
+            string ligne, decomposition ="";
+            int i;
+            StreamReader sr = new StreamReader(chemin);
+            while ((ligne = sr.ReadLine()) != null)
+            {
+                for (i = 0; i < ligne.Length; i++)
+                {
+                    if (ligne[i] == ':' || ligne[i] == '|')
+                    {
+                        trame.Add(decomposition);
+                        trame.Add(Convert.ToString(ligne[i]));
+                        decomposition = "";
+                    }
+                    else
+                    {
+                       decomposition += Convert.ToString(ligne[i]);
+                    }
+                }
+            }
+            return trame;
         }
 
         private static List<int> FiltrerLaTrame(List<string> trame)
