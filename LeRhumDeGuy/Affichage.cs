@@ -2,10 +2,20 @@
 using System.Threading;
 namespace LeRhumDeGuy
 {
+    /// <summary>
+    /// Classe statique Affichage d'afficher les informations en console
+    /// elle fonctionne de pair avec la classe statique Menu,
+    /// Affichage gère la partie visuelle du menu et Menu gère la partie
+    /// logique du menu
+    /// </summary>
     public static class Affichage
     {
         //https://fr.rakko.tools/tools/68/
         //invita
+        #region Méthodes
+        ///<summary>
+        ///Affichage du nom de projet ainsi que le nom de chacun des membres du projet 
+        ///</summary>
         public static void Chargement()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -16,9 +26,11 @@ namespace LeRhumDeGuy
             Console.Write("\n\n\n\nPar :\n- Augustin Bruckner\n- Paul-Henri Favrelle\n- Lucas Lanterne");
             Console.ResetColor();
         }
-
+        ///<summary>
+        /// Texte pour annoncer le menu
+        ///</summary>
         public static void MenuPrincipal()
-        {
+        { 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write("=====================================\n\n");
             Console.Write(" _________   ______  ______   _    _\n| | | | | \\ | |     | |  \\ \\ | |  | |\n| | | | | | | |---- | |  | | | |  | |\n|_| |_| |_| |_|____ |_|  |_| \\_|__|_|\n\n");
@@ -30,9 +42,12 @@ namespace LeRhumDeGuy
             Console.WriteLine("        Que veux tu faire ?");
             Console.Write("=====================================\n");
         }
-
+        ///<summary>
+        ///Choix du mode par l'utilisateur ainsi que la possibilité de
+        ///quitter le programme.
+        /// </summary>
         public static void MenuPrincipalActions()
-        {
+        { 
             Console.WriteLine("a - Charger une carte");
             Console.WriteLine("b - Lire une trame");
             Console.WriteLine("q - Quitter\n\n");
@@ -47,7 +62,9 @@ namespace LeRhumDeGuy
             Console.Write("\n _  _   __ _/_   _\n(__(_(_/ (_(__ _(/_\n\n\n");
             Console.ResetColor();
         }
-
+        ///<summary>
+        /// Demande d'indication du chemin par l'utilisateur et choix du nom de l'île.
+        /// </summary>
         public static (string, string) DemanderCheminCarte()
         {
             (string, string) cheminEtNom;
@@ -61,7 +78,9 @@ namespace LeRhumDeGuy
             cheminEtNom.Item2 = Console.ReadLine();
             return cheminEtNom;
         }
-
+        ///<summary>
+        /// Choix de l'affichage voulu et possibilité de quitter le problème
+        /// </summary>
         public static void MenuCarte(Carte carte)
         {
             carte.AfficherLaCarte();
@@ -76,7 +95,10 @@ namespace LeRhumDeGuy
             Console.Write("\n\n(q-Quitter)Alors moussaillon ? : ");
             Console.ResetColor();
         }
-
+        /// <summary>
+        /// Affichage de la liste des parcelles
+        /// </summary>
+        /// <param name="carte">Carte de l'ile (objet)</param>
         public static void ListeParcelles(Carte carte)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -89,7 +111,9 @@ namespace LeRhumDeGuy
             Console.WriteLine("\n\nAppuyez sur entrée");
             Console.ResetColor();
         }
-
+        ///<summary>
+        /// On effectue une recherche dans la parcelle grâce a une lettre
+        /// </summary>
         public static void InfoParcelle(Carte carte, string lettre)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -102,7 +126,11 @@ namespace LeRhumDeGuy
             Console.WriteLine("\n\nAppuyez sur entrée");
             Console.ResetColor();
         }
-
+        /// <summary>
+        /// Affichage des parcelles supérieures ou égales à un entier n
+        /// </summary>
+        /// <param name="carte">Carte de l'ile (objet)</param>
+        /// <param name="nombre">Entier n</param>
         public static void ParcelleSuperieure(Carte carte, int nombre)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -115,7 +143,9 @@ namespace LeRhumDeGuy
             Console.WriteLine("\n\nAppuyez sur entrée");
             Console.ResetColor();
         }
-
+        ///<summary>
+        ///Affiche l'aire moyen des parcelles
+        /// </summary>
         public static void AireMoyen(Carte carte)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -128,7 +158,9 @@ namespace LeRhumDeGuy
             Console.WriteLine("\n\nAppuyez sur entrée");
             Console.ResetColor();
         }
-
+        ///<summary>
+        ///Ecran d'attente pendant le calcul de l'encryptage de la carte.
+        /// </summary>
         public static void CryptageEnCours()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -149,7 +181,10 @@ namespace LeRhumDeGuy
             Console.Clear();
             Console.ResetColor();
         }
-
+        ///<summary>
+        ///Affichage de la trame de l'ile
+        ///Choix d'envoyer la trame ou non
+        /// </summary>
         public static void AfficherTrame(Carte carte)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -166,7 +201,9 @@ namespace LeRhumDeGuy
             Console.ResetColor();
             Console.Write("Votre réponse (o/n) : ");
         }
-
+        /// <summary>
+        /// Affichage du choix de destination
+        /// </summary>
         public static void ChoixAddresse()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -182,7 +219,9 @@ namespace LeRhumDeGuy
             Console.ResetColor();
 
         }
-
+        /// <summary>
+        /// Animation d'envoi
+        /// </summary>
         public static void EnvoieEnCours()
         {
             Console.Clear();
@@ -211,7 +250,9 @@ namespace LeRhumDeGuy
             Thread.Sleep(1000);
             Console.Clear();
         }
-
+        ///<summary>
+        /// Simple confirmation à l'utilsateur que l'envoi de la carte est bien effectué 
+        /// </summary>
         public static void ConfirmationEnvoi(string addresse)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -225,13 +266,15 @@ namespace LeRhumDeGuy
             Console.WriteLine("\n\nAppuyez sur entrée pour continuer");
             Console.ResetColor();
         }
-
+        /// <summary>
+        ///Choix du nom du chemin ainsi que le chemin de la destination du fichier
+        /// </summary>
         public static (string, string, string) DemanderCheminTrame()
         {
             (string, string, string) cheminNomEtDestination;
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("==========================================================================================\n");
-            Console.Write("Indique le chemin de la trame, son nom ainsi que l'endroit où tu veux sauvegardrr la carte\n");
+            Console.Write("Indique le chemin de la trame, son nom ainsi que l'endroit où tu veux sauvegarder la carte\n");
             Console.Write("==========================================================================================\n\n\n\n");
             Console.WriteLine("Exemple de chemin valide : /home/usr/ile.chiffre");
             Console.Write("Chemin absolu : ");
@@ -245,7 +288,9 @@ namespace LeRhumDeGuy
             Console.Clear();
             return cheminNomEtDestination;
         }
-
+        ///<summary>
+        ///Ecran d'attente pendant le calcul du décryptage de la carte.
+        /// </summary>
         public static void DecryptageEnCours()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -266,9 +311,11 @@ namespace LeRhumDeGuy
             Console.Clear();
             Console.ResetColor();
         }
-
+        ///<summary>
+        ///Affichage de la carte une fois décryptée ainsi que le chemin de sa sauvegarde
+        /// </summary>
         public static void AfficherCarteDecryptee(Carte carte, string destination)
-        {
+        { 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("===========================================");
             Console.WriteLine("              Carte de l'ile : ");
@@ -280,6 +327,6 @@ namespace LeRhumDeGuy
             Console.WriteLine(destination);
             Console.Write("\n\nAppuyez sur entrée pour continuer...");
         }
-
+        #endregion
     }
 }

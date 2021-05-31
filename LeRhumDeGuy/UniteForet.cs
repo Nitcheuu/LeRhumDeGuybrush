@@ -4,13 +4,29 @@ using System.Collections.Generic;
 using System.Text;
 namespace LeRhumDeGuy
 {
+    /// <summary>
+    /// Classe UNiteForet : Modélise une unité de forêt et hérite de la
+    /// classe Unite.
+    /// </summary>
     public class UniteForet : Unite
     {
+        #region Constructeur
+        /// <summary>
+        /// Seul constructeur de la classe
+        /// </summary>
+        /// <param name="x">Coordonnée x</param>
+        /// <param name="y">Coordonnée y</param>
         public UniteForet(int x, int y) : base(x, y)
         {
+            // Application des propriétés de la classe
             this.lettre = 'M';
             this.frontiere += 32;
         }
+        /// <summary>
+        /// Ajoute les frontières en fonction d'un tuple de booléen qui
+        /// représente les 4 points cardinaux.
+        /// </summary>
+        /// <param name="liste">Liste des unités de forêt de la carte</param>
         public void AjouterFrontieres(List<UniteForet> liste)
         {
             //Nord Sud   Est   Ouest
@@ -21,6 +37,11 @@ namespace LeRhumDeGuy
             if (!voisins.Item4) { this.DefinirFrontieres(2); }
         }
 
+        /// <summary>
+        /// Vérifie tous les voisins de l'unité.
+        /// </summary>
+        /// <returns>Voisin(s) de l'unité</returns>
+        /// <param name="liste">Liste des unités de forêt de la carte</param>
         private (bool, bool, bool, bool) VerifierVoisinsForet(List<UniteForet> liste)
         {
             //Nord Sud   Est   Ouest
@@ -40,6 +61,6 @@ namespace LeRhumDeGuy
             }
             return voisins;
         }
-
+        #endregion
     }
 }

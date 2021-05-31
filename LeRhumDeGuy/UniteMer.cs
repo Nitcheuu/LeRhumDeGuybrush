@@ -4,14 +4,31 @@ using System.Collections.Generic;
 using System.Text;
 namespace LeRhumDeGuy
 {
+    /// <summary>
+    /// Classe UniteMer : Modélise une unité de mer et hérite de la classe
+    /// Unite
+    /// </summary>
     public class UniteMer : Unite
     {
+        #region Constructeurs
+        /// <summary>
+        /// Seul constructeur de la classe
+        /// </summary>
+        /// <param name="x">Coordonnée x</param>
+        /// <param name="y">Coordonnée y</param>
         public UniteMer(int x, int y) : base(x, y)
         {
+            // Application des propriétés de la classe
             this.lettre = 'M';
             this.frontiere += 64;
         }
-
+        #endregion
+        #region Méthodes
+        /// <summary>
+        /// Ajoute les frontiéres en fonction d'un tuple de boléens qui
+        /// représente les 4 points cardinaux
+        /// </summary>
+        /// <param name="liste">Liste des unités de mer de la carte</param>
         public void AjouterFrontieres(List<UniteMer> liste)
         {
             //Nord Sud   Est   Ouest
@@ -21,7 +38,11 @@ namespace LeRhumDeGuy
             if (!voisins.Item3) { this.DefinirFrontieres(8); }
             if (!voisins.Item4) { this.DefinirFrontieres(2); }
         }
-
+        /// <summary>
+        /// Vérifie tous les voisins de l'unité
+        /// </summary>
+        /// <returns>Voisins de l'unité</returns>
+        /// <param name="liste">Liste des unités de mer de la carte</param>
         private (bool, bool, bool, bool) VerifierVoisinsMer(List<UniteMer> liste)
         {
             //Nord Sud   Est   Ouest
@@ -41,6 +62,6 @@ namespace LeRhumDeGuy
             }
             return voisins;
         }
-
+        #endregion
     }
 }
