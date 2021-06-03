@@ -78,10 +78,18 @@ namespace LeRhumDeGuy
         {
             (string, string) cheminEtNom;
             cheminEtNom = Affichage.DemanderCheminCarte();
-            Carte carte = new Carte(cheminEtNom.Item1, cheminEtNom.Item2);
-            Console.Clear();
-            Menu.MenuCarte(carte);
-
+            try
+            {
+                Carte carte = new Carte(cheminEtNom.Item1, cheminEtNom.Item2);
+                Console.Clear();
+                Menu.MenuCarte(carte);
+            }catch (Exception)
+            {
+                Affichage.ErreurChemin();
+                Thread.Sleep(2000);
+                Console.Clear();
+                Menu.ChargerUneCarte();
+            }
         }
         /// <summary>
         /// Proposer à l'utilisateur les différentes actions possible avec
@@ -209,15 +217,25 @@ namespace LeRhumDeGuy
                     string addresse;
                     Affichage.ChoixAddresse();
                     addresse = Console.ReadLine();
-                    Affichage.EnvoieEnCours();
-                    carte.SauvegaderLaCarteCrypte(addresse);
-                    while (sortie != "")
+                    try
                     {
-                        Affichage.ConfirmationEnvoi(addresse);
-                        sortie = Console.ReadLine();
-                        Console.Clear();
+                        carte.SauvegaderLaCarteCrypte(addresse);
+                        Affichage.EnvoieEnCours();
+                        while (sortie != "")
+                        {
+                            Affichage.ConfirmationEnvoi(addresse);
+                            sortie = Console.ReadLine();
+                            Console.Clear();
+                        }
+                        Menu.MenuCarte(carte);
                     }
-                    Menu.MenuCarte(carte);
+                    catch (Exception)
+                    {
+                        Affichage.ErreurChemin();
+                        Thread.Sleep(2000);
+                        Console.Clear();
+                        Menu.Cryptage(carte);
+                    }
                 }
 
             }
@@ -232,20 +250,30 @@ namespace LeRhumDeGuy
             (string, string, string) CheminNomEtDestination;
             string reponse ="*";
             CheminNomEtDestination = Affichage.DemanderCheminTrame();
-            Decrypteur.DecrypterLaTrame(CheminNomEtDestination.Item1,
-                CheminNomEtDestination.Item2, CheminNomEtDestination.Item3);
-            Carte carte = new Carte(CheminNomEtDestination.Item3 + 
-            CheminNomEtDestination.Item2 + ".clair", 
-                CheminNomEtDestination.Item2);
-            Affichage.DecryptageEnCours();
-            while (reponse != "")
+            try
             {
-                Affichage.AfficherCarteDecryptee(carte,
-                CheminNomEtDestination.Item3);
-                reponse = Console.ReadLine();
-                Console.Clear();
+                Decrypteur.DecrypterLaTrame(CheminNomEtDestination.Item1,
+                    CheminNomEtDestination.Item2, CheminNomEtDestination.Item3);
+                Carte carte = new Carte(CheminNomEtDestination.Item3 +
+                CheminNomEtDestination.Item2 + ".clair",
+                    CheminNomEtDestination.Item2);
+                Affichage.DecryptageEnCours();
+                while (reponse != "")
+                {
+                    Affichage.AfficherCarteDecryptee(carte,
+                    CheminNomEtDestination.Item3);
+                    reponse = Console.ReadLine();
+                    Console.Clear();
+                }
+                Menu.MenuPrinciapl();
             }
-            Menu.MenuPrinciapl();
+            catch (Exception)
+            {
+                Affichage.ErreurChemin();
+                Thread.Sleep(2000);
+                Console.Clear();
+                Menu.DecrypterUneTrame();
+            }
 
         }
         #endregion

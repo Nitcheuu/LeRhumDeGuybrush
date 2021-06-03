@@ -221,20 +221,104 @@ namespace LeRhumDeGuy
             char lettre = '*';
             // Vérification des lettres des voisins
             // lettre change de valeur si une unité voisine n'est pas nulle
-            if (NordOuestSudEst.Item1) { if (carte[y - 1, x] != '*') {
-                                            lettre = carte[y - 1, x]; } }
-            if (NordOuestSudEst.Item2) { if (carte[y, x - 1] != '*') { 
-                                            lettre = carte[y, x - 1]; } }
-            if (NordOuestSudEst.Item3) { if (carte[y + 1, x] != '*') { 
-                                            lettre = carte[y + 1, x]; } }
-            if (NordOuestSudEst.Item4) { if (carte[y, x + 1 ] != '*') { 
-                                            lettre = carte[y, x + 1]; } }
+            if (NordOuestSudEst.Item1) {
+                Decrypteur.ParcourirNord(ref lettre, carte, frontieres, x, y);}
+            if (NordOuestSudEst.Item2) {
+                Decrypteur.ParcourirOuest(ref lettre, carte, frontieres, x, y);}
+            if (NordOuestSudEst.Item3) {
+                Decrypteur.ParcourirSud(ref lettre, carte, frontieres, x, y);}
+            if (NordOuestSudEst.Item4) {
+                Decrypteur.ParcourirEst(ref lettre, carte, frontieres, x, y);}
             Decrypteur.AppliquerLesLettres(ref carte, NordOuestSudEst,
                                                     ref ASCII, lettre, x, y);
-
         }
         /// <summary>
-        /// Appliquers the les lettres.
+        /// Parcourir les unités au nord tant qu'il y a un voisin au nord
+        /// </summary>
+        /// <param name="lettre">lettre</param>
+        /// <param name="carte">carte</param>
+        /// <param name="frontieres">tableau des frontières</param>
+        /// <param name="x">coordonnées x de l'unité</param>
+        /// <param name="y">coordonnées y de l'unité</param>
+        private static void ParcourirNord(ref char lettre, char[,] carte,
+            int[,] frontieres, int x, int y)
+        {
+            (bool, bool, bool, bool) NordOuestSudEst =
+            Decrypteur.LectureBinaireVoisins(frontieres[y, x]);
+            if (NordOuestSudEst.Item1)
+            {
+                if(carte[y - 1, x] != '*') { 
+                    lettre = carte[y - 1, x];
+                }
+                Decrypteur.ParcourirNord(ref lettre, carte, frontieres, x,
+                    y-1);
+            }
+        }
+        /// <summary>
+        /// Parcourir les unités à l'ouest tant qu'il y a un voisin à l'ouest
+        /// </summary>
+        /// <param name="lettre">lettre</param>
+        /// <param name="carte">carte</param>
+        /// <param name="frontieres">tableau des frontières</param>
+        /// <param name="x">coordonnées x de l'unité</param>
+        /// <param name="y">coordonnées y de l'unité</param>
+        private static void ParcourirOuest(ref char lettre, char[,] carte,
+            int[,] frontieres, int x, int y)
+        {
+            int suivant = x - 1;
+            (bool, bool, bool, bool) NordOuestSudEst =
+            Decrypteur.LectureBinaireVoisins(frontieres[y, x]);
+            if(NordOuestSudEst.Item2)
+            {
+                if (carte[y, x - 1] != '*') { lettre = carte[y, x - 1]; }
+                Decrypteur.ParcourirOuest(ref lettre, carte, frontieres, suivant,
+                    y);
+            }
+        }
+        /// <summary>
+        /// Parcourir les unités au sud tant qu'il y a un voisin au sud
+        /// </summary>
+        /// <param name="lettre">lettre</param>
+        /// <param name="carte">carte</param>
+        /// <param name="frontieres">tableau des frontières</param>
+        /// <param name="x">coordonnées x de l'unité</param>
+        /// <param name="y">coordonnées y de l'unité</param>
+        private static void ParcourirSud(ref char lettre, char[,] carte,
+            int[,] frontieres, int x, int y)
+        {
+            int suivant = y + 1;
+            (bool, bool, bool, bool) NordOuestSudEst =
+            Decrypteur.LectureBinaireVoisins(frontieres[y, x]);
+            if (NordOuestSudEst.Item3)
+            {
+                if (carte[y + 1, x] != '*') { lettre = carte[y + 1, x]; }
+                Decrypteur.ParcourirSud(ref lettre, carte, frontieres, x,
+                    suivant);
+            }
+        }
+        /// <summary>
+        /// Parcourir les unités à l'est tant qu'il y a un voisin à l'est
+        /// </summary>
+        /// <param name="lettre">lettre</param>
+        /// <param name="carte">carte</param>
+        /// <param name="frontieres">tableau des frontières</param>
+        /// <param name="x">coordonnées x de l'unité</param>
+        /// <param name="y">coordonnées y de l'unité</param>
+        private static void ParcourirEst(ref char lettre, char[,] carte,
+            int[,] frontieres, int x, int y)
+        {
+            int suivant = x + 1;
+            (bool, bool, bool, bool) NordOuestSudEst =
+            Decrypteur.LectureBinaireVoisins(frontieres[y, x]);
+            if (NordOuestSudEst.Item4)
+            {
+                if (carte[y, x + 1] != '*') { lettre = carte[y, x + 1]; }
+                Decrypteur.ParcourirEst(ref lettre, carte, frontieres, suivant,
+                    y);
+            }
+        }
+        /// <summary>
+        /// Appliquer la lettre à l'unité et ses voisins.
         /// </summary>
         /// <param name="carte">Tableau de la carte en référence</param>
         /// <param name="NordOuestSudEst">Tuple des voisins</param>

@@ -37,47 +37,8 @@ namespace LeRhumDeGuy
 
             this.lettre = lettre;
 
-            //this.coin1 = listeUnite[0].RetournerCoordonnes();
-
-            //this.coin2 = listeUnite[0].RetournerCoordonnes();
-
-            //this.dimensionsParcelle = (0, 0);
-
-            //this.DefinirLesCoins();
-
-            //this.DefinirLesDimensions();
-
         }
         #endregion
-
-        /*private void DefinirLesCoins()
-        {
-            foreach (UniteTerre unite in this.listeUnite)
-            {
-                if (unite.RetournerCoordonnes().Item1 < this.coin1.Item1 && 
-                unite.RetournerCoordonnes().Item2 < this.coin1.Item2)
-                {
-                    this.coin1 = unite.RetournerCoordonnes();
-                }
-                if (unite.RetournerCoordonnes().Item1 >= this.coin1.Item1 && unite.RetournerCoordonnes().Item2 > this.coin1.Item2)
-                {
-                    this.coin2 = unite.RetournerCoordonnes();
-                }
-            }
-        }
-
-        private void DefinirLesDimensions()
-        {
-            int i;
-            for (i = coin1.Item1; i <= coin2.Item1; i++)
-            {
-                this.dimensionsParcelle.Item1++;
-            }
-            for (i = coin1.Item2; i <= coin2.Item2; i++)
-            {
-                this.dimensionsParcelle.Item2++;
-            }
-        }*/
 
         #region Méthodes
         /// <summary>

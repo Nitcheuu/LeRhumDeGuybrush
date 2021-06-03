@@ -54,7 +54,20 @@ namespace LeRhumDeGuy
             Console.Write("Alors moussaillon ? : ");
             Console.ResetColor();
         }
-
+        /// <summary>
+        /// Affiche à l'écran une erreur quand le chemin est mauvais
+        /// </summary>
+        public static void ErreurChemin()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("===========================");
+            Console.WriteLine("ERREUR : Chemin introuvable");
+            Console.WriteLine("===========================");
+            Console.ResetColor();
+        }
+        /// <summary>
+        /// En-tete du menu
+        /// </summary>
         private static void MenuChargerCarte()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -62,7 +75,7 @@ namespace LeRhumDeGuy
             Console.Write("\n _  _   __ _/_   _\n(__(_(_/ (_(__ _(/_\n\n\n");
             Console.ResetColor();
         }
-        ///<summary>
+        /// <summary>
         /// Demande d'indication du chemin par l'utilisateur et choix du nom de l'île.
         /// </summary>
         public static (string, string) DemanderCheminCarte()
@@ -72,13 +85,14 @@ namespace LeRhumDeGuy
             Console.Write("==============================================================================\n");
             Console.Write("Indique le chemin absolu de ton fichier .clair et le nom de l'ile moussailon !\n");
             Console.Write("==============================================================================\n\n\n\n");
+            Console.WriteLine("Exemple de chemin valide : /home/usr/ile.clair");
             Console.Write("Chemin absolu : ");
             cheminEtNom.Item1 = Console.ReadLine();
             Console.Write("Nom de l'ile : ");
             cheminEtNom.Item2 = Console.ReadLine();
             return cheminEtNom;
         }
-        ///<summary>
+        /// <summary>
         /// Choix de l'affichage voulu et possibilité de quitter le problème
         /// </summary>
         public static void MenuCarte(Carte carte)
@@ -111,7 +125,7 @@ namespace LeRhumDeGuy
             Console.WriteLine("\n\nAppuyez sur entrée");
             Console.ResetColor();
         }
-        ///<summary>
+        /// <summary>
         /// On effectue une recherche dans la parcelle grâce a une lettre
         /// </summary>
         public static void InfoParcelle(Carte carte, string lettre)
@@ -143,8 +157,8 @@ namespace LeRhumDeGuy
             Console.WriteLine("\n\nAppuyez sur entrée");
             Console.ResetColor();
         }
-        ///<summary>
-        ///Affiche l'aire moyen des parcelles
+        /// <summary>
+        /// Affiche l'aire moyen des parcelles
         /// </summary>
         public static void AireMoyen(Carte carte)
         {
@@ -158,8 +172,8 @@ namespace LeRhumDeGuy
             Console.WriteLine("\n\nAppuyez sur entrée");
             Console.ResetColor();
         }
-        ///<summary>
-        ///Ecran d'attente pendant le calcul de l'encryptage de la carte.
+        /// <summary>
+        /// Ecran d'attente pendant le calcul de l'encryptage de la carte.
         /// </summary>
         public static void CryptageEnCours()
         {
@@ -181,9 +195,9 @@ namespace LeRhumDeGuy
             Console.Clear();
             Console.ResetColor();
         }
-        ///<summary>
-        ///Affichage de la trame de l'ile
-        ///Choix d'envoyer la trame ou non
+        /// <summary>
+        /// Affichage de la trame de l'ile
+        /// Choix d'envoyer la trame ou non
         /// </summary>
         public static void AfficherTrame(Carte carte)
         {
@@ -250,7 +264,7 @@ namespace LeRhumDeGuy
             Thread.Sleep(1000);
             Console.Clear();
         }
-        ///<summary>
+        /// <summary>
         /// Simple confirmation à l'utilsateur que l'envoi de la carte est bien effectué 
         /// </summary>
         public static void ConfirmationEnvoi(string addresse)
@@ -267,7 +281,7 @@ namespace LeRhumDeGuy
             Console.ResetColor();
         }
         /// <summary>
-        ///Choix du nom du chemin ainsi que le chemin de la destination du fichier
+        /// Choix du nom du chemin ainsi que le chemin de la destination du fichier
         /// </summary>
         public static (string, string, string) DemanderCheminTrame()
         {
@@ -288,8 +302,8 @@ namespace LeRhumDeGuy
             Console.Clear();
             return cheminNomEtDestination;
         }
-        ///<summary>
-        ///Ecran d'attente pendant le calcul du décryptage de la carte.
+        /// <summary>
+        /// Ecran d'attente pendant le calcul du décryptage de la carte.
         /// </summary>
         public static void DecryptageEnCours()
         {
@@ -311,8 +325,8 @@ namespace LeRhumDeGuy
             Console.Clear();
             Console.ResetColor();
         }
-        ///<summary>
-        ///Affichage de la carte une fois décryptée ainsi que le chemin de sa sauvegarde
+        /// <summary>
+        /// Affichage de la carte une fois décryptée ainsi que le chemin de sa sauvegarde
         /// </summary>
         public static void AfficherCarteDecryptee(Carte carte, string destination)
         { 

@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{6C4060F4-CAEE-4E31-8AD6-0C2B394437F3}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Source non disponible">
     <Files>
-      <File FileName="LeRhumDeGuy/Program.cs" Line="11" Column="1" />
-      <File FileName="LeRhumDeGuy/Carte.cs" Line="241" Column="9" />
-      <File FileName="LeRhumDeGuy/Unite.cs" Line="28" Column="1" />
-      <File FileName="LeRhumDeGuy/UniteTerre.cs" Line="2" Column="1" />
-      <File FileName="LeRhumDeGuy/UniteMer.cs" Line="4" Column="19" />
-      <File FileName="LeRhumDeGuy/UniteForet.cs" Line="12" Column="28" />
-      <File FileName="LeRhumDeGuy/Parcelle.cs" Line="93" Column="42" />
-      <File FileName="LeRhumDeGuy/Decrypteur.cs" Line="16" Column="68" />
-      <File FileName="LeRhumDeGuy/Menu.cs" Line="32" Column="42" />
-      <File FileName="LeRhumDeGuy/Affichage.cs" Line="281" Column="71" />
+      <File FileName="LeRhumDeGuy/Program.cs" Line="12" Column="110" />
+      <File FileName="LeRhumDeGuy/Carte.cs" Line="28" Column="9" />
+      <File FileName="LeRhumDeGuy/Unite.cs" Line="78" Column="19" />
+      <File FileName="LeRhumDeGuy/UniteTerre.cs" Line="28" Column="39" />
+      <File FileName="LeRhumDeGuy/UniteMer.cs" Line="21" Column="48" />
+      <File FileName="LeRhumDeGuy/UniteForet.cs" Line="64" Column="19" />
+      <File FileName="LeRhumDeGuy/Parcelle.cs" Line="38" Column="34" />
+      <File FileName="LeRhumDeGuy/Decrypteur.cs" Line="226" Column="36" />
+      <File FileName="LeRhumDeGuy/Menu.cs" Line="5" Column="5" />
+      <File FileName="LeRhumDeGuy/Affichage.cs" Line="10" Column="19" />
       <File FileName="Source non disponible" />
     </Files>
     <Pads>

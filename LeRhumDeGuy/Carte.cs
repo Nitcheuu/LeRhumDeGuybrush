@@ -169,6 +169,8 @@ namespace LeRhumDeGuy
             {
                 for (x = 0; x < 10; x++)
                 {
+                    // Ajoute à la liste carteCryptee la frontière qui
+                    // correspond aux coordonnées x y
                     this.RecuperLesFrontieres((x, y));
                     this.AjouterLesSeparateurs(x); // "|" ou ":"
                 }
